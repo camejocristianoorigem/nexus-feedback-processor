@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: nexus.feedback.processor
+  threads:
+    virtual:
+      enabled: true
+  ai:
+    openai:
+      base-url: https://generativelanguage.googleapis.com/v1beta/openai/
+      api-key: ${GEMINI_API_KEY}
+      chat:
+        options:
+          model: gemini-2.5-flash
+
+server:
+  port: 8081
+  tomcat:
+    threads:
+      max: 200
+    keep-alive-timeout: 60s
+    max-keep-alive-requests: 10000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    displayRequestDuration: true
+  api-docs:
+    path: /v3/api-docs
